@@ -2,8 +2,9 @@ import React from 'react';
 import Container from '../container/Container';
 import { Baby, HeartPulse, ShieldPlus, Users, ArrowUpRight, Check } from 'lucide-react';
 
-const services = [
+export const allServices = [
   {
+    id: 'baby-care',
     title: 'Baby & Child Care',
     description: 'Gentle, loving daily care for your child — focused on safety, comfort and healthy routines.',
     features: ['Feeding & hygiene', 'Routine & sleep', 'Play & safety'],
@@ -12,6 +13,7 @@ const services = [
     tag: 'Most requested',
   },
   {
+    id: 'elderly-care',
     title: 'Elderly & Senior Care',
     description: 'Dignified care that keeps life comfortable, calm, and independent.',
     features: ['Companionship', 'Mobility support', 'Daily living help'],
@@ -20,6 +22,7 @@ const services = [
     tag: 'Trusted care',
   },
   {
+    id: 'home-nursing',
     title: 'Home Nursing & Medical Support',
     description: 'Skilled nursing care at home — supporting recovery, health monitoring and daily wellbeing.',
     features: ['Medication support', 'Monitoring', 'Aftercare guidance'],
@@ -28,6 +31,7 @@ const services = [
     tag: 'Skilled',
   },
   {
+    id: 'short-term-care',
     title: 'Respite & Short-Term Care',
     description: 'Short-term and emergency care — giving families peace of mind when extra support is needed.',
     features: ['Hourly support', 'Overnight care', 'Weekend coverage'],
@@ -61,7 +65,7 @@ const ServicesOverview = () => {
 
         {/* Grid */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
-          {services.map((service, index) => {
+          {allServices.map((service, index) => {
             const Icon = service.icon;
 
             return (
@@ -110,7 +114,7 @@ const ServicesOverview = () => {
                   </div>
                 </div>
 
-                <div className='h-30'>
+                <div className="h-30">
                   {/* Title */}
                   <h3 className="text-xl font-extrabold text-base-content leading-snug">{service.title}</h3>
 
