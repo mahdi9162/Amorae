@@ -1,5 +1,12 @@
 import Navbar from '@/components/navbar/Navbar';
 import './globals.css';
+import { DM_Sans } from 'next/font/google';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-dm-sans',
+});
 
 export const metadata = {
   title: 'Amorae',
@@ -9,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body className={`${dmSans.className} antialiased`} suppressHydrationWarning={true}>
         <header>
           <Navbar />
         </header>

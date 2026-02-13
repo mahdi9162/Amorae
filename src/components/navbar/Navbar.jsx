@@ -18,7 +18,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="bg-base-100 shadow-sm px-3 lg:px-0">
       <Container>
         <div className="navbar px-0">
           <div className="navbar-start">
@@ -44,10 +44,10 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-end gap-2">
-            <Link href="/login" className="btn btn-outline btn-secondary">
+            <Link href="/login" className="btn btn-outline btn-secondary hidden md:flex">
               Login
             </Link>
-            <Link href="/register" className="btn btn-primary">
+            <Link href="/register" className="btn btn-primary hidden md:flex">
               Register
             </Link>
           </div>

@@ -15,3 +15,35 @@
   --color-border: oklch(0.9276 0.0058 264.53);
 }
 @custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+
+/* Bannner Pagination style */
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 14px !important;
+  background: oklch(0.3717 0.0392 257.29) !important;
+  opacity: 0.6 !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px !important;
+  border-radius: 6px !important;
+  background: oklch(0.5858 0.222 17.58) !important;
+  opacity: 1 !important;
+  transition: width 0.3s ease-in-out !important;
+}
+
+.swiper-pagination {
+  bottom: 10px !important;
+}
+
+@media (max-width: 767px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .swiper-pagination {
+    bottom: 6px !important;
+  }
+}
