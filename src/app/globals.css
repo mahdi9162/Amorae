@@ -47,3 +47,18 @@
     bottom: 6px !important;
   }
 }
+
+/* Only Testimonials slider pagination */
+.testimonialsSwiper .swiper-pagination {
+  bottom: 6px !important;
+}
+
+@media (max-width: 767px) {
+  .testimonialsSwiper .swiper {
+    padding-bottom: 28px; /* pagination space */
+  }
+
+  .testimonialsSwiper .swiper-pagination {
+    bottom: 6px !important; /* inside safe area */
+  }
+}
