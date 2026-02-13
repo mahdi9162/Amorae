@@ -29,7 +29,7 @@ const collapseTexts = [
 
 const About = () => {
   return (
-    <section className="my-10 md:my-16 lg:my-30 overflow-hidden bg-base-100 px-3 lg:px-0">
+    <section className="my-12 md:my-16 lg:my-30 overflow-hidden bg-base-100 px-3 lg:px-0">
       <Container>
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* LEFT */}
@@ -73,7 +73,7 @@ const About = () => {
           </div>
 
           {/* RIGHT - Image Grid */}
-          <div className="relative flex-1 w-full max-w-xl md:mx-auto lg:ml-auto h-auto md:h-150 mt-12 md:mt-0">
+          <div className="relative flex-1 w-full max-w-xl md:mx-auto lg:mx-0 lg:ml-auto h-auto md:h-150 mt-0 lg:mt-40">
             {/* female */}
             <div className="relative md:absolute left-0 md:left-0 top-0 md:top-20 w-full md:w-[45%] aspect-3/4 rounded-3xl overflow-hidden shadow-2xl bg-primary/20 hover:translate-y-1 duration-500 mb-6 md:mb-0">
               <Image src="/femaleNurse.webp" alt="Female Caregiver" fill className="object-cover" />

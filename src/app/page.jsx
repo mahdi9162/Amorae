@@ -1,5 +1,6 @@
 import About from '@/components/home/About';
 import Hero from '@/components/home/Hero';
+import Services from '@/components/home/Services';
 import Image from 'next/image';
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <About />
+      <Services />
     </>
   );
 }
