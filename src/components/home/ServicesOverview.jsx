@@ -2,46 +2,15 @@ import React from 'react';
 import Container from '../container/Container';
 import { Baby, HeartPulse, ShieldPlus, Users, ArrowUpRight, Check } from 'lucide-react';
 
-export const allServices = [
-  {
-    id: 'baby-care',
-    title: 'Baby & Child Care',
-    description: 'Gentle, loving daily care for your child — focused on safety, comfort and healthy routines.',
-    features: ['Feeding & hygiene', 'Routine & sleep', 'Play & safety'],
-    icon: Baby,
-    cta: 'Explore',
-    tag: 'Most requested',
-  },
-  {
-    id: 'elderly-care',
-    title: 'Elderly & Senior Care',
-    description: 'Dignified care that keeps life comfortable, calm, and independent.',
-    features: ['Companionship', 'Mobility support', 'Daily living help'],
-    icon: Users,
-    cta: 'Explore',
-    tag: 'Trusted care',
-  },
-  {
-    id: 'home-nursing',
-    title: 'Home Nursing & Medical Support',
-    description: 'Skilled nursing care at home — supporting recovery, health monitoring and daily wellbeing.',
-    features: ['Medication support', 'Monitoring', 'Aftercare guidance'],
-    icon: HeartPulse,
-    cta: 'Explore',
-    tag: 'Skilled',
-  },
-  {
-    id: 'short-term-care',
-    title: 'Respite & Short-Term Care',
-    description: 'Short-term and emergency care — giving families peace of mind when extra support is needed.',
-    features: ['Hourly support', 'Overnight care', 'Weekend coverage'],
-    icon: ShieldPlus,
-    cta: 'Explore',
-    tag: 'Flexible',
-  },
-];
+const iconMap = { Baby, HeartPulse, ShieldPlus, Users };
+const getServices = async () => {
+  const res = await fetch('http://localhost:3000/api/serviceApi');
+  return await res.json();
+};
 
-const ServicesOverview = () => {
+const ServicesOverview = async () => {
+  const services = await getServices();
+
   return (
     <section className="relative my-12 md:my-16 lg:my-30 overflow-hidden bg-base-100 px-3 lg:px-0">
       <Container>
@@ -62,25 +31,16 @@ const ServicesOverview = () => {
             <span className="badge badge-outline border-secondary/30 text-base-content/70 py-3 px-4 rounded-2xl">Home-first support</span>
           </div>
         </div>
-
         {/* Grid */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
-          {allServices.map((service, index) => {
-            const Icon = service.icon;
+          {services.map((service, index) => {
+            const Icon = iconMap[service.icon] || ShieldPlus;
 
             return (
               <div
                 key={index}
                 className="
-                  group relative overflow-hidden rounded-[36px]
-                  bg-base-100/70 backdrop-blur-xl
-                  border border-secondary/10
-                  p-7 md:p-8
-                  shadow-sm
-                  transition-all duration-700
-                  hover:-translate-y-1.5 hover:shadow-xl
-                  hover:border-primary/25
-                "
+                  group relative overflow-hidden rounded-[36px] bg-base-100/70 backdrop-blur-xl  border border-secondary/10 p-7 md:p-8 shadow-sm transition-all duration-700 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/25"
               >
                 {/* top accent line */}
                 <div className="absolute inset-x-0 top-0 h-1 bg-primary/30 group-hover:bg-primary transition-colors" />
@@ -107,7 +67,7 @@ const ServicesOverview = () => {
                       ring-1 ring-primary/10
                       group-hover:bg-primary group-hover:text-white
                       group-hover:ring-primary/30
-                      transition-all duration-500
+                      transition-all duration-700
                     "
                   >
                     <Icon className="w-7 h-7" />
@@ -142,11 +102,11 @@ const ServicesOverview = () => {
                     border border-primary/15
                     bg-primary/5 text-primary
                     group-hover:bg-primary group-hover:text-white
-                    transition-all duration-300
+                    transition-all duration-700
                     active:scale-[0.98] cursor-pointer
                   "
                 >
-                  {service.cta}
+                  View Details
                 </button>
               </div>
             );

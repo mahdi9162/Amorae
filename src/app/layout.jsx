@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar/Navbar';
 import './globals.css';
 import { DM_Sans } from 'next/font/google';
 import Footer from '@/components/footer/Footer';
+import Providers from './providers';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -21,7 +22,9 @@ export default function RootLayout({ children }) {
         <header>
           <Navbar />
         </header>
-        <main>{children}</main>
+        <main>
+          <Providers>{children}</Providers>
+        </main>
         <footer>
           <Footer />
         </footer>

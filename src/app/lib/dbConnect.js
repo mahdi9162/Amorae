@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB;
+const uri = process.env.DB_URL;
+const dbName = process.env.DB_NAME;
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -10,6 +10,6 @@ const client = new MongoClient(uri, {
   },
 });
 
-export const connect = (collection) => {
-  return client.db(dbName).collection(collection);
+export const dbConnect = (cname) => {
+  return client.db(dbName).collection(cname);
 };
