@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../container/Container';
 import { Baby, HeartPulse, ShieldPlus, Users, ArrowUpRight, Check } from 'lucide-react';
+import Link from 'next/link';
 
 const iconMap = { Baby, HeartPulse, ShieldPlus, Users };
 const getServices = async () => {
@@ -95,10 +96,11 @@ const ServicesOverview = async () => {
                 </div>
 
                 {/* CTA */}
-                <button
+                <Link
+                  href={`/service/${service._id}`}
                   className="
                     mt-8 w-full rounded-2xl py-4
-                    font-bold text-sm
+                    font-bold text-sm btn
                     border border-primary/15
                     bg-primary/5 text-primary
                     group-hover:bg-primary group-hover:text-white
@@ -107,7 +109,7 @@ const ServicesOverview = async () => {
                   "
                 >
                   View Details
-                </button>
+                </Link>
               </div>
             );
           })}
