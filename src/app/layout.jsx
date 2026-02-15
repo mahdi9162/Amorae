@@ -3,6 +3,7 @@ import './globals.css';
 import { DM_Sans } from 'next/font/google';
 import Footer from '@/components/footer/Footer';
 import Providers from './providers';
+import NextAuthProvider from '@/provider/NextAuthProvider';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -17,18 +18,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${dmSans.className} antialiased`} suppressHydrationWarning={true}>
-        <header>
-          <Navbar />
-        </header>
-        <main>
-          <Providers>{children}</Providers>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </body>
-    </html>
+    <NextAuthProvider>
+      <html lang="en">
+        <body className={`${dmSans.className} antialiased`} suppressHydrationWarning={true}>
+          <header>
+            <Navbar />
+          </header>
+          <main>
+            <Providers>{children}</Providers>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </body>
+      </html>
+    </NextAuthProvider>
   );
 }

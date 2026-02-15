@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Container from '../container/Container';
 import Logo from '../Logo/Logo';
 import Navlink from '../buttons/Navlink';
+import AuthButtons from '../buttons/AuthButtons';
 
 const Navbar = () => {
   const nav = (
@@ -44,9 +45,7 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-end gap-2">
-            <Link href="/login" className="btn btn-outline btn-secondary hidden md:flex">
-              Login
-            </Link>
+            <AuthButtons />
             <Link href="/register" className="btn btn-primary hidden md:flex">
               Register
             </Link>

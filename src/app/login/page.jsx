@@ -4,20 +4,28 @@ import Link from 'next/link';
 import { Mail, Lock, ShieldCheck } from 'lucide-react';
 import Container from '@/components/container/Container';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-  const handleLoginForm = (e) => {
+  const router = useRouter();
+  const handleLoginForm = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    const formData = {
-      email,
-      password,
-    };
+    const result = await signIn('credentials', {
+      email: email,
+      password: password,
+      redirect: false,
+    });
 
-    signIn('credentials', formData);
+    if (!result.ok) {
+      alert('email password not matched');
+    } else {
+      alert('Login success');
+      router.push('/');
+    }
   };
 
   return (
@@ -70,6 +78,7 @@ const Login = () => {
                     type="email"
                     name="email"
                     placeholder="you@example.com"
+                    required
                     className="input input-bordered w-full rounded-2xl pl-12 h-12"
                   />
                 </div>
@@ -90,6 +99,7 @@ const Login = () => {
                     type="password"
                     name="password"
                     placeholder="••••••••"
+                    required
                     className="input input-bordered w-full rounded-2xl pl-12 h-12"
                   />
                 </div>
