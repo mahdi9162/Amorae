@@ -1,6 +1,9 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.DB_URL;
 const dbName = process.env.DB_NAME;
+export const collections = {
+  USERS: 'users',
+};
 
 const client = new MongoClient(uri, {
   serverApi: {
