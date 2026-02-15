@@ -51,8 +51,8 @@ const ServiceDetailPage = async ({ params }) => {
               {/* Left */}
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
-                  <span className="badge badge-secondary text-xs md:text-base rounded-full px-4 py-3">{service.tag}</span>
-                  <span className="badge badge-outline text-xs md:text-base border-primary/20 text-base-content/70 rounded-full px-4 py-3">
+                  <span className="badge badge-secondary text-xs md:text-sm rounded-full px-4 py-3">{service.tag}</span>
+                  <span className="badge badge-outline text-xs md:text-sm border-primary/20 text-base-content/70 rounded-full px-4 py-3">
                     Home-first support
                   </span>
                 </div>
@@ -80,7 +80,7 @@ const ServiceDetailPage = async ({ params }) => {
                 {/* CTAs */}
                 <div className="pt-3 flex flex-col sm:flex-row gap-3">
                   {/* Requirement: Book Service -> Booking/Login */}
-                  <Link href="/booking" className="btn btn-primary rounded-2xl px-7">
+                  <Link href={`/booking/${service._id}`} className="btn btn-primary rounded-2xl px-7">
                     {service.details.ctaPrimary}
                     <ChevronRight className="h-4 w-4" />
                   </Link>
@@ -222,7 +222,7 @@ const ServiceDetailPage = async ({ params }) => {
                 </p>
 
                 <div className="mt-4 flex flex-col gap-3">
-                  <Link href="/booking" className="btn btn-primary rounded-2xl">
+                  <Link href={`/booking/${service._id}`} className="btn btn-primary rounded-2xl">
                     Book Service
                   </Link>
                   <Link href="/services" className="btn btn-secondary rounded-2xl">
