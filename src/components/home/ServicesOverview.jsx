@@ -2,11 +2,13 @@ import React from 'react';
 import Container from '../container/Container';
 import { Baby, HeartPulse, ShieldPlus, Users, ArrowUpRight, Check } from 'lucide-react';
 import Link from 'next/link';
+import { collections, dbConnect } from '@/app/lib/dbConnect';
 
 const iconMap = { Baby, HeartPulse, ShieldPlus, Users };
 const getServices = async () => {
-  const res = await fetch('http://localhost:3000/api/serviceApi');
-  return await res.json();
+  const col = await dbConnect(collections.SERVICES);
+  const services = await col.find({}).toArray();
+  return services;
 };
 
 const ServicesOverview = async () => {

@@ -2,17 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2, Clock3, ShieldCheck, Sparkles, ChevronRight } from 'lucide-react';
 import Container from '@/components/container/Container';
+import { dbConnect, collections } from '@/app/lib/dbConnect';
+import { ObjectId } from 'mongodb';
 
 const getSingleService = async (id) => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/serviceApi/${id}`);
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`API failed ${res.status}: ${text}`);
-  }
-
-  return res.json();
+  const col = dbConnect(collections.SERVICES);
+  return await col.findOne({ _id: new ObjectId(id) });
 };
 
 const ServiceDetailPage = async ({ params }) => {
