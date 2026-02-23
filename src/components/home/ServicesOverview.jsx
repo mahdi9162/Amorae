@@ -38,6 +38,7 @@ const ServicesOverview = async () => {
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
           {services.map((service, index) => {
             const Icon = iconMap[service.icon] || ShieldPlus;
+            const id = service?._id.toString();
 
             return (
               <div
@@ -99,7 +100,7 @@ const ServicesOverview = async () => {
 
                 {/* CTA */}
                 <Link
-                  href={`/service/${service._id}`}
+                  href={`/service/${id}`}
                   className="
                     mt-8 w-full rounded-2xl py-4
                     font-bold text-sm btn

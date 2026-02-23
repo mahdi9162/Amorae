@@ -153,12 +153,9 @@ const ServiceDetailPage = async ({ params }) => {
                   ))}
                 </div>
 
-                <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                <div className="mt-5 ">
                   <Link href="/booking" className="btn btn-primary rounded-2xl">
                     Book Service
-                  </Link>
-                  <Link href="/login" className="btn btn-secondary rounded-2xl">
-                    Login to continue
                   </Link>
                 </div>
               </div>

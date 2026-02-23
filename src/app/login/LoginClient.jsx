@@ -3,28 +3,34 @@
 import Link from 'next/link';
 import { Mail, Lock, ShieldCheck } from 'lucide-react';
 import Container from '@/components/container/Container';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const LoginClient = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const handleLoginForm = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
+    console.log('callbackUrl from URL:', callbackUrl);
+
     const result = await signIn('credentials', {
       email: email,
       password: password,
       redirect: false,
+      callbackUrl,
     });
+    console.log('result:', result);
 
     if (!result.ok) {
       alert('email password not matched');
     } else {
       alert('Login success');
-      router.push('/');
+      router.push(result.url || callbackUrl);
     }
   };
 
