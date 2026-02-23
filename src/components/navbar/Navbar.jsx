@@ -1,10 +1,13 @@
+'use client';
 import Link from 'next/link';
 import Container from '../container/Container';
 import Logo from '../Logo/Logo';
 import Navlink from '../buttons/Navlink';
 import AuthButtons from '../buttons/AuthButtons';
+import { useAuth } from '@/hooks/useAuth';
 
 const Navbar = () => {
+  const { isLoggedIn } = useAuth();
   const nav = (
     <>
       <li>
@@ -46,9 +49,11 @@ const Navbar = () => {
 
           <div className="navbar-end gap-2">
             <AuthButtons />
-            <Link href="/register" className="btn btn-primary hidden md:flex">
-              Register
-            </Link>
+            {!isLoggedIn && (
+              <Link href="/register" className="btn btn-primary hidden md:flex">
+                Register
+              </Link>
+            )}
           </div>
         </div>
       </Container>

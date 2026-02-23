@@ -11,9 +11,14 @@ const BookingPage = async ({ params }) => {
   const service = await getSingleService(id);
 
   if (!service) return <h2>Bookings not found</h2>;
+
+  const allServices = {
+    ...service,
+    _id: service._id.toString(),
+  };
   return (
     <>
-      <Bookings service={service} />
+      <Bookings service={allServices} />
     </>
   );
 };
